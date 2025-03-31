@@ -11,6 +11,9 @@
   imports = [
     # include NixOS-WSL modules
     <nixos-wsl/modules>
+    ./modules/dev-tools.nix    # Development tools
+    ./modules/themes.nix       # Visual themes including Rose Pine
+    ./modules/shell.nix        # Shell configuration
   ];
    
   wsl.enable = true;
@@ -21,24 +24,18 @@
   time.timeZone = "America/New_York";
   nixpkgs.config.allowUnfree = true;
 
-    # Common development tools
+   # Basic system utilities
   environment.systemPackages = with pkgs; [
-    # Development tools
-    git
-    vim
-    vscode
-    gnumake
-    gcc
-    nodejs
-    python3
-    rustc
-    cargo
-    
-    # Utilities
     curl
     wget
     htop
     tree
+    neofetch
+    bottom      # Modern system monitor
+    fd          # Better find
+    ripgrep     # Better grep
+    bat         # Better cat with syntax highlighting
+    eza         # Better ls
   ];
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
